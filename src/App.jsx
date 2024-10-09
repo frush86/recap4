@@ -2,16 +2,22 @@ import { initialColors } from "./lib/colors";
 import Color from "./Components/Color/Color";
 import "./App.css";
 import ColorForm from "./Components/Color/ColorForm";
+import { nanoid } from "nanoid";
 import { useState } from "react";
 
 function App() {
   const [colors, setColors] = useState(initialColors);
   // colors holds current list of colors
 
-  function addColor(newColor) {
-    // passing to color form
-    setColors((prev) => [newColor, ...prev]);
-  }
+  const addColor = (newColor) => {
+    setColors([
+      {
+        id: nanoid(),
+        ...newColor,
+      },
+      ...colors,
+    ]);
+  };
 
   return (
     <>

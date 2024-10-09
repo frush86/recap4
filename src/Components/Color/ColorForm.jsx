@@ -1,61 +1,38 @@
 import "./ColorForm.css";
-import { useState } from "react";
-import { nanoid } from "nanoid";
 
-export default function ColorForm({ submitAddColor }) {
-  const [hexColor, setHexColor] = useState("#000000");
-  const [contrast, setContrast] = useState("#000000");
+import ColorInput from "./ColorInput";
 
-  const handleSumbit = (event) => {
+export default function ColorForm({
+  submitAddColor,
+  initialData = { role: "some color", hex: "#123456", contrastText: "#ffffff" },
+}) {
+  function handleSubmit(event) {
     event.preventDefault();
-
-    const newColor = {
-      id: nanoid(),
-      role: event.target.role.value,
-      hex: hexColor,
-      contrast: contrast,
-    };
-    submitAddColor(newColor);
-    console.log(newColor);
-  };
-
-  const handleHexChange = (event) => {
-    setHexColor(event.target.value);
-  };
-
-  const handleContrastChange = (event) => {
-    setContrast(event.target.value);
-  };
+    const formData = new FormData(event.target);
+    const data = Object.fromEntries(formData);
+    submitAddColor(data);
+  }
 
   return (
-    <form className="color-form" onSubmit={handleSumbit}>
+    <form className="color-form" onSubmit={handleSubmit}>
       <label htmlFor="role">
         Role<br></br>
-        <input type="text" id="role" name="role" />
+        <input
+          type="text"
+          id="role"
+          name="role"
+          defaultValue={initialData.role}
+        />
       </label>
 
       <label htmlFor="hex">
         HEX<br></br>
-        <input type="text" value={hexColor} onChange={handleHexChange} />
-        <input
-          type="color"
-          id="hex"
-          name="hex"
-          value={hexColor}
-          onChange={handleHexChange}
-        />
+        <ColorInput id="hex" defaultValue={initialData.hex} />
       </label>
 
       <label htmlFor="contrast">
         Contrast<br></br>
-        <input type="text" value={contrast} onChange={handleContrastChange} />
-        <input
-          type="color"
-          id="contrast"
-          name="contrast"
-          value={contrast}
-          onChange={handleContrastChange}
-        />
+        <ColorInput id="contrast" defaultValue={initialData.contrastText} />
       </label>
 
       <button type="submit">ADD COLOR</button>
