@@ -1,17 +1,22 @@
 import "./ColorForm.css";
 import { useState } from "react";
+import { nanoid } from "nanoid";
 
-export default function ColorForm() {
+export default function ColorForm({ submitAddColor }) {
   const [hexColor, setHexColor] = useState("#000000");
   const [contrast, setContrast] = useState("#000000");
 
   const handleSumbit = (event) => {
     event.preventDefault();
 
-    const formData = new FormData(event.target);
-    const data = Object.fromEntries(formData);
-
-    console.log(data);
+    const newColor = {
+      id: nanoid(),
+      role: event.target.role.value,
+      hex: hexColor,
+      contrast: contrast,
+    };
+    submitAddColor(newColor);
+    console.log(newColor);
   };
 
   const handleHexChange = (event) => {
