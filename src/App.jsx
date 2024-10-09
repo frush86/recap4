@@ -20,11 +20,11 @@ function App() {
   };
 
   // writing the function here because the parent has the array of all the colors
-  const deleteColor = (id) => {
+  function deleteColor(id) {
     setColors(colors.filter((color) => color.id !== id));
-  };
+  }
   // updating the colors array by calling setColors
-  //
+  // callback function: color => color.id !== id
 
   return (
     <>
@@ -32,13 +32,7 @@ function App() {
       <ColorForm submitAddColor={addColor} />
       {colors.map((color) => {
         // .map over the array colors.js
-        return (
-          <Color
-            key={color.id}
-            color={color}
-            deleteColor={() => deleteColor(color.id)}
-          />
-        );
+        return <Color key={color.id} color={color} deleteColor={deleteColor} />;
       })}
     </>
   );
