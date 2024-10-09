@@ -11,6 +11,8 @@ export default function ColorForm({
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
     submitAddColor(data);
+    console.log(data);
+    console.log(submitAddColor);
   }
 
   return (
@@ -30,9 +32,9 @@ export default function ColorForm({
         <ColorInput id="hex" defaultValue={initialData.hex} />
       </label>
 
-      <label htmlFor="contrast">
+      <label htmlFor="contrastText">
         Contrast<br></br>
-        <ColorInput id="contrast" defaultValue={initialData.contrastText} />
+        <ColorInput id="contrastText" defaultValue={initialData.contrastText} />
       </label>
 
       <button type="submit">ADD COLOR</button>
