@@ -20,9 +20,9 @@ function App() {
   };
 
   // writing the function here because the parent has the array of all the colors
-  function deleteColor(id) {
+  const deleteColor = (id) => {
     setColors(colors.filter((color) => color.id !== id));
-  }
+  };
   // updating the colors array by calling setColors
   // callback function: color => color.id !== id
 
