@@ -1,6 +1,7 @@
 import "./Color.css";
 
 export default function Color({ color }) {
+  // create prop named color
   return (
     <div
       className="color-card"
