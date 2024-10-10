@@ -1,9 +1,12 @@
-import { initialColors } from "./lib/colors";
-import Color from "./Components/Color/Color";
-import "./App.css";
-import ColorForm from "./Components/Color/ColorForm";
-import { nanoid } from "nanoid";
 import { useState } from "react";
+import { nanoid } from "nanoid";
+
+import "./App.css";
+
+import { initialColors } from "./lib/colors";
+
+import Color from "./Components/Color/Color";
+import ColorForm from "./Components/Color/ColorForm";
 
 function App() {
   const [colors, setColors] = useState(initialColors);

@@ -1,9 +1,11 @@
-import "./Color.css";
 import { useState } from "react";
+
+import "./Color.css";
+
 import ColorForm from "./ColorForm";
 
 export default function Color({ color, deleteColor, updateColor }) {
-  //state track delete
+  //state track delete and confirming
   const [isConfirming, setIsConfirming] = useState(false);
   // toggle edit
   const [isEditing, setIsEditing] = useState(false);
@@ -57,7 +59,7 @@ export default function Color({ color, deleteColor, updateColor }) {
           {isConfirming ? (
             <>
               <button onClick={cancelClick}>Cancel</button>
-              <button onClick={deleteClick}>Delete</button>
+              <button onClick={deleteClick}>Yes, Delete</button>
             </>
           ) : (
             <button onClick={deleteClick}>Delete</button>
