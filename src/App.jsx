@@ -1,4 +1,4 @@
-import { useState } from "react";
+import useLocalStorageState from "use-local-storage-state"; // local storage
 import { nanoid } from "nanoid";
 
 import "./App.css";
@@ -9,7 +9,10 @@ import Color from "./Components/Color/Color";
 import ColorForm from "./Components/Color/ColorForm";
 
 function App() {
-  const [colors, setColors] = useState(initialColors);
+  //use local storage
+  const [colors, setColors] = useLocalStorageState("colors", {
+    defaultValue: initialColors,
+  });
   // colors holds current list of colors
 
   const addColor = (newColor) => {
