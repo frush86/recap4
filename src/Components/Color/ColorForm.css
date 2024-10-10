@@ -7,3 +7,18 @@ form {
 button {
   width: 100px;
 }
+
+input {
+  border-radius: 10px;
+  border: 1px solid;
+}
+
+button {
+  border-radius: 10px;
+  border: 1px solid;
+  background-color: white;
+}
+
+button:hover {
+  background-color: bisque;
+}
