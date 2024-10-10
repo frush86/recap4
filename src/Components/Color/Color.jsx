@@ -34,12 +34,12 @@ export default function Color({ color, deleteColor, updateColor }) {
   };
 
   // need a function for update color
-  // use something like addColor form App.jsx??
+  // use something that .maps color form App.jsx??
   // import as prop
 
   const handleUpdateColor = (updatedData) => {
     updateColor(color.id, updatedData);
-    setIsEditing(false);
+    setIsEditing(false); // exit edit mode
   };
 
   return (
