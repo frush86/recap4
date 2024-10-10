@@ -5,6 +5,7 @@ import ColorInput from "./ColorInput";
 export default function ColorForm({
   submitAddColor,
   initialData = { role: "some color", hex: "#123456", contrastText: "#ffffff" },
+  isEditing,
 }) {
   function handleSubmit(event) {
     event.preventDefault();
@@ -37,7 +38,7 @@ export default function ColorForm({
         <ColorInput id="contrastText" defaultValue={initialData.contrastText} />
       </label>
 
-      <button type="submit">ADD COLOR</button>
+      <button type="submit">{isEditing ? "Update" : "Add Color"}</button>
     </form>
   );
 }
