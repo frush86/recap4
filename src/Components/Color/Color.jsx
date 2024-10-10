@@ -3,6 +3,7 @@ import { useState } from "react";
 import "./Color.css";
 
 import ColorForm from "./ColorForm";
+import CopyTo from "./CopyToClipboard";
 
 export default function Color({ color, deleteColor, updateColor }) {
   //state track delete and confirming
@@ -53,6 +54,7 @@ export default function Color({ color, deleteColor, updateColor }) {
       {!isEditing ? (
         <>
           <h3 className="color-card-headline">{color.hex}</h3>
+          <CopyTo hex={color.hex} />
           <h4>{color.role}</h4>
           <p>contrast: {color.contrastText}</p>
 
