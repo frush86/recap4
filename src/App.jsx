@@ -47,6 +47,7 @@ function App() {
     <>
       <h1>Theme Creator</h1>
       <ColorForm submitAddColor={addColor} />
+
       {colors.map((color) => {
         // .map over the array colors.js
         return (
