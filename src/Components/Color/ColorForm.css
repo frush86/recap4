@@ -1,16 +1,19 @@
 form {
   display: flex;
   flex-direction: column;
-  width: 400px;
+  width: 300px;
+  font-size: 15px;
 }
 
 button {
-  width: 100px;
+  width: 110px;
+  height: 30px;
 }
 
 input {
   border-radius: 10px;
   border: 1px solid;
+  height: 30px;
 }
 
 button {

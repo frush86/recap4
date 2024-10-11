@@ -44,40 +44,42 @@ export default function Color({ color, deleteColor, updateColor }) {
   };
 
   return (
-    <div
-      className="color-card"
-      style={{
-        background: color.hex,
-        color: color.contrastText,
-      }}
-    >
-      {!isEditing ? (
-        <>
-          <h3 className="color-card-headline">{color.hex}</h3>
-          <CopyTo hex={color.hex} />
-          <h4>{color.role}</h4>
-          <p>contrast: {color.contrastText}</p>
+    <div className="card-container">
+      <div
+        className="color-card"
+        style={{
+          background: color.hex,
+          color: color.contrastText,
+        }}
+      >
+        {!isEditing ? (
+          <>
+            <h3 className="color-card-headline">{color.hex}</h3>
+            <CopyTo hex={color.hex} />
+            <h4>{color.role}</h4>
+            <p>contrast: {color.contrastText}</p>
 
-          {isConfirming ? (
-            <>
-              <button onClick={cancelClick}>Cancel</button>
-              <button onClick={deleteClick}>Yes, Delete</button>
-            </>
-          ) : (
-            <button onClick={deleteClick}>Delete</button>
-          )}
-          <button onClick={edit}>Edit</button>
-        </>
-      ) : (
-        <>
-          <ColorForm
-            submitAddColor={handleUpdateColor}
-            initialData={color}
-            isEditing={true}
-          />
-          <button onClick={cancelEdit}>Cancel</button>
-        </>
-      )}
+            {isConfirming ? (
+              <>
+                <button onClick={cancelClick}>Cancel</button>
+                <button onClick={deleteClick}>❌ Delete</button>
+              </>
+            ) : (
+              <button onClick={deleteClick}>❌ Delete</button>
+            )}
+            <button onClick={edit}>✏️ Edit</button>
+          </>
+        ) : (
+          <>
+            <ColorForm
+              submitAddColor={handleUpdateColor}
+              initialData={color}
+              isEditing={true}
+            />
+            <button onClick={cancelEdit}>Cancel</button>
+          </>
+        )}
+      </div>
     </div>
   );
 }

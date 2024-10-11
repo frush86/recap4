@@ -38,7 +38,7 @@ export default function ColorForm({
         <ColorInput id="contrastText" defaultValue={initialData.contrastText} />
       </label>
 
-      <button type="submit">{isEditing ? "Update" : "Add Color"}</button>
+      <button type="submit">{isEditing ? "🎨 Update" : "🎨 Add colour"}</button>
     </form>
   );
 }

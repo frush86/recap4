@@ -16,10 +16,10 @@ export default function CopyTo({ hex }) {
   const handleClick = async () => {
     await CopyHex(); // wait to copy the hex value
     setCopyStatus("Success!"); // update the button text
-    setTimeout(() => setCopyStatus("Copy"), 3000); // reset
+    setTimeout(() => setCopyStatus("Copy"), 2000); // reset
   };
 
-  return <button onClick={handleClick}>{copyStatus}</button>;
+  return <button onClick={handleClick}>📜 {copyStatus}</button>;
 }
 
 // //   const [copyStatus, setCopyStatus] = useState("Copy");
