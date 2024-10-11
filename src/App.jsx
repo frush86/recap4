@@ -9,7 +9,6 @@ import Color from "./Components/Color/Color";
 import ColorForm from "./Components/Color/ColorForm";
 
 function App() {
-  //use local storage
   const [colors, setColors] = useLocalStorageState("colors", {
     defaultValue: initialColors,
   });

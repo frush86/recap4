@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useEffect } from "react";
 
 import "./Color.css";
 
@@ -43,6 +44,30 @@ export default function Color({ color, deleteColor, updateColor }) {
     setIsEditing(false); // exit edit mode
   };
 
+  // API //
+  const [contrast, setContrast] = useState(); // need to implenemt state into body element
+
+  useEffect(() => {
+    async function fetchContrast() {
+      const response = await fetch(
+        "https://www.aremycolorsaccessible.com/api/are-they",
+        {
+          method: "POST",
+          body: JSON.stringify({ colors: [color.hex, color.contrastText] }),
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      const contrast = await response.json();
+      console.log(contrast);
+      setContrast(contrast);
+    }
+    fetchContrast();
+  }, [color]); // dependency List rerender everytime the color changes
+
+  // API //
+
   return (
     <div className="card-container">
       <div
@@ -58,6 +83,9 @@ export default function Color({ color, deleteColor, updateColor }) {
             <CopyTo hex={color.hex} />
             <h4>{color.role}</h4>
             <p>contrast: {color.contrastText}</p>
+            <p className="contrast-check">
+              Your contrast-score: {contrast.overall}
+            </p>
 
             {isConfirming ? (
               <>
